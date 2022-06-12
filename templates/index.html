@@ -16,7 +16,7 @@
             href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
             rel="stylesheet"
         />
-        <title>Predict product rating</title>
+        <title>Stock price prediction</title>
         <style>
             body {
                 font-family: "Roboto", sans-serif;
@@ -28,8 +28,8 @@
                 /* color: blue; */
             }
             button[type="submit"] {
-                background-color: #00a173;
-                color: #202124;
+                background-color: #db4d41;
+                color: #dce0eb;
                 font-weight: 500;
                 width: 150;
                 border: none;
@@ -43,7 +43,7 @@
                 cursor: pointer;
             }
             button[type="submit"]:hover {
-                background-color: #0e8f6b;
+                background-color: #db4d41;
                 color: #202124;
                 font-weight: 500;
                 width: 150;
@@ -58,7 +58,8 @@
                 cursor: pointer;
             }
             nav {
-                background-color: #00a173 !important;
+                background-color: #db4d41 !important;
+                color: #dce0eb;
             }
             .col {
                 padding: 30px;
@@ -71,7 +72,7 @@
             .navbar-brand {
                 font-size: 30px;
                 font-weight: 500;
-                color: #323335;
+                color: #dce0eb;
             }
             .banner {
                 display: block;
@@ -90,11 +91,11 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/"
                     ><img
-                        src="{{url_for('static', filename= 'google-play (1).png')}}"
+                        src="{{url_for('static', filename= 'financial-profit2.png')}}"
                         alt=""
                         class="me-2"
                     />
-                    Google Play</a
+                    Stock</a
                 >
                 <button
                     class="navbar-toggler"
@@ -126,11 +127,9 @@
             </div>
         </nav>
         <center>
-            <h1 class="mt-4 mb-4">
-                Predict product rating on Google Play Store
-            </h1>
+            <h1 class="mt-4 mb-4">Predict stock prices</h1>
             <img
-                src="{{url_for('static', filename= '4649292_Cover_PlayStoreRating.jpg')}}"
+                src="{{url_for('static', filename= 'financialwealthmanagementstockmarket.png')}}"
                 alt=""
                 class="me-2 banner"
             />
@@ -157,12 +156,10 @@
                         class="accordion-collapse collapse"
                         aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample"
+                        style="width: 40%"
                     >
                         <div class="accordion-body">
                             <ul class="list-group">
-                                <li class="list-group-item">
-                                    19522208 - Nguyễn Hữu Thắng
-                                </li>
                                 <li class="list-group-item">
                                     19522159 - Hoàng Trí Tâm
                                 </li>
@@ -170,7 +167,13 @@
                                     19522215 - Phạm Minh Thắng
                                 </li>
                                 <li class="list-group-item">
-                                    19522xxx - Bành Hoàng Giang
+                                    19522xxx - Đỗ Thị Thanh An
+                                </li>
+                                <li class="list-group-item">
+                                    19522208 - Nguyễn Hữu Thắng
+                                </li>
+                                <li class="list-group-item">
+                                    19522xxx - Trương Thị Kim Thành
                                 </li>
                             </ul>
                         </div>
@@ -196,7 +199,7 @@
                         data-bs-parent="#accordionExample"
                     >
                         <div class="accordion-body">
-                            <h1>Predict product rating on Google Play Store</h1>
+                            <h1>Predict stock prices</h1>
                         </div>
                     </div>
                 </div>
@@ -222,26 +225,22 @@
                         <div class="accordion-body">
                             Based on the values of
                             <code
-                                >category, rating count, installs, minimum
-                                installs, maximum installs, free, price, size,
-                                minimum android, content rating, ad supported,
-                                in app purchases, editors choice</code
-                            >, we can predict the rating of the product.
+                                >Open, High, Low, Close, Volume, date_year,
+                                date_month, date_day</code
+                            >, We can predict stock prices.
                         </div>
                     </div>
                 </div>
             </div>
             <p>
                 You needs to input all the information below to predict the
-                rating of the product.
+                stock prices.
             </p>
             <p>
                 The result will be shown on the next page. We'll not share your
                 information with anyone.
             </p>
         </center>
-        <!-- action="/"
-            method="POST" -->
         <form
             class="container mt-4 mb-4 needs-validation"
             action="/"
@@ -249,94 +248,18 @@
         >
             <div class="row">
                 <div class="col">
-                    <legend>Category</legend>
-                    <div class="input-group mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >Choose the Category of the product</label
-                        >
-                        <div class="input-group-prepend">
-                            <label
-                                class="input-group-text"
-                                for="inputGroupSelect01"
-                                >Options</label
-                            >
-                        </div>
-                        <select
-                            class="form-select"
-                            id="category"
-                            name="category"
-                            required
-                        >
-                            <option selected disabled value="">
-                                Choose your option
-                            </option>
-                            <option value="0">0 - Action</option>
-                            <option value="1">1 - Adventure</option>
-                            <option value="2">2 - Arcade</option>
-                            <option value="3">3 - Art & Design</option>
-                            <option value="4">4 - Auto & Vehicles</option>
-                            <option value="5">5 - Beauty</option>
-                            <option value="6">6 - Board</option>
-                            <option value="7">7 - Books & Reference</option>
-                            <option value="8">8 - Business</option>
-                            <option value="9">9 - Card</option>
-                            <option value="10">10 - Casino</option>
-                            <option value="11">11 - Casual</option>
-                            <option value="12">12 - Comics</option>
-                            <option value="13">13 - Communication</option>
-                            <option value="14">14 - Dating</option>
-                            <option value="15">15 - Education</option>
-                            <option value="16">16 - Educational</option>
-                            <option value="17">17 - Entertainment</option>
-                            <option value="18">18 - Events</option>
-                            <option value="19">19 - Finance</option>
-                            <option value="20">20 - Food & Drink</option>
-                            <option value="21">21 - Health & Fitness</option>
-                            <option value="22">22 - House & Home</option>
-                            <option value="23">23 - Libraries & Demo</option>
-                            <option value="24">24 - Lifestyle</option>
-                            <option value="25">25 - Maps & Navigation</option>
-                            <option value="26">26 - Medical</option>
-                            <option value="27">27 - Music</option>
-                            <option value="28">28 - Music & Audio</option>
-                            <option value="29">29 - News & Magazines</option>
-                            <option value="30">30 - Parenting</option>
-                            <option value="31">31 - Personalization</option>
-                            <option value="32">32 - Photography</option>
-                            <option value="33">33 - Productivity</option>
-                            <option value="34">34 - Puzzle</option>
-                            <option value="35">35 - Racing</option>
-                            <option value="36">36 - Role Playing</option>
-                            <option value="37">37 - Shopping</option>
-                            <option value="38">38 - Simulation</option>
-                            <option value="39">39 - Social</option>
-                            <option value="40">40 - Sports</option>
-                            <option value="41">41 - Strategy</option>
-                            <option value="42">42 - Tools</option>
-                            <option value="43">43 - Travel & Local</option>
-                            <option value="44">44 - Trivia</option>
-                            <option value="45">45 - Editors</option>
-                            <option value="46">46 - Weather</option>
-                            <option value="47">47 - Word</option>
-                        </select>
-                        <div id="emailHelp" class="form-text mt-4">
-                            Choose 1 category to predict the rating of the
-                            product.
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <legend>Rating Count</legend>
+                    <legend>Open prices</legend>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label"
-                            >Enter the Rating Count of the product</label
+                            >Enter the Open prices</label
                         >
                         <input
                             type="text"
                             class="form-control"
-                            id="rating_count"
+                            id="open_prices"
                             aria-describedby="emailHelp"
-                            name="rating_count"
+                            name="open_prices"
+                            min="0.0001"
                             required
                         />
                         <!-- <div id="emailHelp" class="form-text">
@@ -345,38 +268,18 @@
                     </div>
                 </div>
                 <div class="col">
-                    <legend>Installs</legend>
+                    <legend>Close prices</legend>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label"
-                            >Enter the Installs of the product</label
+                            >Enter the Close prices</label
                         >
                         <input
                             type="text"
                             class="form-control"
-                            id="installs"
+                            id="close_prices"
                             aria-describedby="emailHelp"
-                            name="installs"
-                            required
-                        />
-                        <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <legend>Minimum Installs</legend>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >Enter the Minimum Installs of the product</label
-                        >
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="minimum_installs"
-                            aria-describedby="emailHelp"
-                            name="minimum_installs"
+                            name="close_prices"
+                            min="0.0001"
                             required
                         />
                         <!-- <div id="emailHelp" class="form-text">
@@ -385,234 +288,88 @@
                     </div>
                 </div>
                 <div class="col">
-                    <legend>Maximum Installs</legend>
+                    <legend>High prices</legend>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label"
-                            >Enter the Maximum Installs of the product</label
+                            >Enter the High prices</label
                         >
                         <input
                             type="text"
                             class="form-control"
-                            id="maximum_installs"
+                            id="high_prices"
                             aria-describedby="emailHelp"
-                            name="maximum_installs"
-                            required
-                        />
-                        <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col">
-                    <legend>Free</legend>
-                    <div class="input-group mb-3">
-                        <label for="exampleInputEmail1" class="form-label">
-                            The product you choose is free or not free?
-                        </label>
-                        <div class="input-group-prepend">
-                            <label
-                                class="input-group-text"
-                                for="inputGroupSelect01"
-                                >Options</label
-                            >
-                        </div>
-                        <select
-                            class="form-select"
-                            id="free"
-                            name="free"
-                            required
-                        >
-                            <option selected disabled value="">
-                                Choose your option
-                            </option>
-                            <option value="1">Free</option>
-                            <option value="0">Not Free</option>
-                        </select>
-                        <div id="emailHelp" class="form-text mt-4">
-                            If the product you choose is free? price = 0
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <legend>Price</legend>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >Enter the Price of the product</label
-                        >
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="price"
-                            aria-describedby="emailHelp"
-                            name="price"
+                            name="high_prices"
                             required
                             min="0.0001"
                         />
-                        <div id="emailHelp" class="form-text mt-4">
+                        <!-- <div id="emailHelp" class="form-text mt-4">
                             If price = 0, you cannot edit this field.
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <legend>Size</legend>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >Enter the Size of the product</label
-                        >
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="size"
-                            aria-describedby="emailHelp"
-                            name="size"
-                            required
-                        />
-                        <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col">
-                    <legend>Minimum Android</legend>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >Enter the Minimum Android of the product</label
-                        >
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="minimum_android"
-                            aria-describedby="emailHelp"
-                            name="minimum_android"
-                            required
-                        />
-                        <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
                         </div> -->
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <legend>Content Rating</legend>
+                    <legend>Low prices</legend>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label"
-                            >Enter the Content Rating of the product</label
+                            >Enter the Low prices</label
                         >
                         <input
                             type="text"
                             class="form-control"
-                            id="content_rating"
+                            id="low_prices"
                             aria-describedby="emailHelp"
-                            name="content_rating"
+                            name="low_prices"
                             required
+                            min="0.0001"
                         />
-                        <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
+                        <!-- <div id="emailHelp" class="form-text mt-4">
+                            If price = 0, you cannot edit this field.
                         </div> -->
                     </div>
                 </div>
                 <div class="col">
-                    <legend>Ad Supported</legend>
-                    <div class="input-group mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >The product you choose is Ad Supported?</label
-                        >
-                        <div class="input-group-prepend">
-                            <label
-                                class="input-group-text"
-                                for="inputGroupSelect01"
-                                >Options</label
-                            >
-                        </div>
-                        <select
-                            class="form-select"
-                            id="ad_supported"
-                            name="ad_supported"
-                            required
-                        >
-                            <option selected disabled value="">
-                                Choose your option
-                            </option>
-                            <option value="1">True</option>
-                            <option value="0">False</option>
-                        </select>
-                        <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col">
-                    <legend>In App Purchases</legend>
-                    <div class="input-group mb-3">
-                        <label for="exampleInputEmail1" class="form-label"
-                            >Enter the In App Purchases of the product</label
-                        >
-                        <div class="input-group-prepend">
-                            <label
-                                class="input-group-text"
-                                for="inputGroupSelect01"
-                                >Options</label
-                            >
-                        </div>
-                        <select
-                            class="form-select"
-                            id="in_app_purchases"
-                            name="in_app_purchases"
-                            required
-                        >
-                            <option selected disabled value="">
-                                Choose your option
-                            </option>
-                            <option value="1">True</option>
-                            <option value="0">False</option>
-                        </select>
-                        <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <legend>Editors Choice</legend>
+                    <legend>Volume</legend>
                     <div class="mb-3">
-                        <div class="input-group mb-3">
-                            <label for="exampleInputEmail1" class="form-label"
-                                >Enter the Editors Choice of the product</label
-                            >
-                            <div class="input-group-prepend">
-                                <label
-                                    class="input-group-text"
-                                    for="inputGroupSelect01"
-                                    >Options</label
-                                >
-                            </div>
-                            <select
-                                class="form-select"
-                                id="editors_choice"
-                                name="editors_choice"
-                                required
-                            >
-                                <option selected disabled value="">
-                                    Choose your option
-                                </option>
-                                <option value="1">True</option>
-                                <option value="0">False</option>
-                            </select>
-                            <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
-                        </div> -->
-                        </div>
-                        <!-- <div id="emailHelp" class="form-text">
-                            We'll never share with anyone else.
+                        <label for="exampleInputEmail1" class="form-label"
+                            >Enter the Volume</label
+                        >
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="volume"
+                            aria-describedby="emailHelp"
+                            name="volume"
+                            required
+                            min="0.0001"
+                        />
+                        <!-- <div id="emailHelp" class="form-text mt-4">
+                            If price = 0, you cannot edit this field.
                         </div> -->
                     </div>
                 </div>
-                <div class="col"></div>
-                <div class="col"></div>
+                <div class="col">
+                    <legend>Date</legend>
+                    <div class="input-group mb-3">
+                        <label for="exampleInputEmail1" class="form-label">
+                            Enter the Date
+                        </label>
+                        <input
+                            type="date"
+                            style="
+                                width: 320px;
+                                height: 38px;
+                                border-radius: 4px;
+                            "
+                            name="date"
+                            id="date"
+                        />
+                    </div>
+                    <!-- <div id="emailHelp" class="form-text mt-4">
+                            If the product you choose is free? price = 0
+                        </div> -->
+                </div>
             </div>
             <!-- <button id="liveToastBtn">Check all the fields</button> -->
             <button type="submit" class="btn btn-primary" id="liveToastBtn">
@@ -629,9 +386,9 @@
             >
                 <div class="toast-header">
                     <img
-                        src="{{url_for('static', filename= 'google-play.png')}}"
+                        src="{{url_for('static', filename= 'financial-profit.png')}}"
                         class="me-2"
-                        alt="Google Play Store"
+                        alt="Stock"
                     />
                     <strong class="me-auto"> Error </strong>
                     <small> a few seconds ago </small>
@@ -649,38 +406,26 @@
         </div>
     </body>
     <script>
-        const Category = document.getElementById("category");
-        const Rating_Count = document.getElementById("rating_count");
-        const Installs = document.getElementById("installs");
-        const Minimum_Installs = document.getElementById("minimum_installs");
-        const Maximum_Installs = document.getElementById("maximum_installs");
-        const Free = document.getElementById("free");
-        const Price = document.getElementById("price");
-        const Size = document.getElementById("size");
-        const Minimum_Android = document.getElementById("minimum_android");
-        const Content_Rating = document.getElementById("content_rating");
-        const Ad_Supported = document.getElementById("ad_supported");
-        const In_App_Purchases = document.getElementById("in_app_purchases");
-        const Editors_Choice = document.getElementById("editors_choice");
+        const open_prices = document.getElementById("open_prices");
+        const close_prices = document.getElementById("close_prices");
+        const high_prices = document.getElementById("high_prices");
+        const low_prices = document.getElementById("low_prices");
+        const volume = document.getElementById("volume");
+        const date = document.getElementById("date");
+        console.log(1);
+        console.log(`data: ${date.value}`);
         // toast
         const toastTrigger = document.getElementById("liveToastBtn");
         const toastLiveExample = document.getElementById("liveToast");
         const toastLiveExample1 = document.getElementById("liveToast1");
         // live toast
         if (
-            Category.value == "" ||
-            Rating_Count.value == "" ||
-            Installs.value == "" ||
-            Minimum_Installs.value == "" ||
-            Maximum_Installs.value == "" ||
-            Free.value == "" ||
-            Price.value == "" ||
-            Size.value == "" ||
-            Minimum_Android.value == "" ||
-            Content_Rating.value == "" ||
-            Ad_Supported.value == "" ||
-            In_App_Purchases.value == "" ||
-            Editors_Choice.value == ""
+            open_prices.value == "" ||
+            close_prices.value == "" ||
+            high_prices.value == "" ||
+            low_prices.value == "" ||
+            volume.value == "" ||
+            date.value == ""
         ) {
             if (toastTrigger) {
                 toastTrigger.addEventListener("click", () => {
@@ -689,16 +434,6 @@
                 });
             }
         }
-        console.log(Free.value);
-        Free.onclick = function () {
-            if (Free.value == "1") {
-                Price.value = "0";
-                // Price.disabled = true;
-            } else {
-                Price.value = "";
-                Price.disabled = false;
-            }
-        };
     </script>
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

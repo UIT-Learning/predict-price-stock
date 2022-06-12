@@ -15,9 +15,13 @@
             body {
                 font-family: "Roboto", sans-serif;
                 color: #5f6368;
+                background-image: url("{{url_for('static', filename= '25dfinancialfuturesgrowth_4728772.png')}}");
+                /* background-image: url("{{url_for('static', filename= 'financialwealthmanagementstockmarket.png')}}"); */
+                background-size: 100%;
             }
             nav {
-                background-color: #00a173 !important;
+                background-color: #db4d41 !important;
+                color: #dce0eb;
             }
             .navbar-brand {
                 font-size: 30px;
@@ -32,7 +36,7 @@
                 margin-bottom: 70px;
             }
             .btn-continue {
-                background-color: #00a173;
+                background-color: #db4d41;
                 color: #202124;
                 font-weight: 500;
                 width: 150;
@@ -49,7 +53,7 @@
                 cursor: pointer;
             }
             .btn-continue:hover {
-                background-color: #0e8f6b;
+                background-color: #d6746c;
                 color: #202124;
                 font-weight: 500;
                 width: 150;
@@ -70,7 +74,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" href="/"
                     ><img
-                        src="{{url_for('static', filename= 'google-play (1).png')}}"
+                        src="{{url_for('static', filename= 'financial-profit2.png')}}"
                         alt=""
                         class="me-2"
                     />
@@ -106,49 +110,26 @@
             </div>
         </nav>
         <center>
-            <h1 class="mt-4 mb-4">
-                Result predict product rating on Google Play Store
-            </h1>
-            <div class="labelInfo">
+            <h1 class="mt-4 mb-4">Predict stock prices</h1>
+            <!-- <img
+                src="{{url_for('static', filename= '25dfinancialfuturesgrowth_4728772.png')}}"
+                alt=""
+                class="me-2"
+                width="100%"
+            /> -->
+            <!-- <div class="labelInfo">
                 <span class="badge text-bg-success">> 4 Star</span>
                 <span class="badge text-bg-primary"
                     >> 3.5 Star and < 4 Star</span
                 >
                 <span class="badge text-bg-danger">< 3.5 Star</span>
-            </div>
+            </div> -->
         </center>
         <div class="container">
-            {% if prediction_text > 4 %}
             <div class="alert alert-success" role="alert">
-                The rating of the product based on Decision Tree algorithm is
-                <b>{{prediction_text}}</b>
+                Prediction result:
+                <b>{{prediction_text}} USD</b>
             </div>
-            {% elif prediction_text > 3.5 and prediction_text < 4 %}
-            <div class="alert alert-primary" role="alert">
-                The rating of the product based on Decision Tree algorithm is
-                <b>{{prediction_text}}</b>
-            </div>
-            {% else %}
-            <div class="alert alert-danger" role="alert">
-                The rating of the product based on Decision Tree algorithm is
-                <b>{{prediction_text}}</b>
-            </div>
-            {% endif %} {% if prediction_text1 > 4 %}
-            <div class="alert alert-success" role="alert">
-                The rating of the product based on XGB Regressor algorithm is
-                <b> {{prediction_text1}}</b>
-            </div>
-            {% elif prediction_text1 > 3.5 and prediction_text1 < 4 %}
-            <div class="alert alert-primary" role="alert">
-                The rating of the product based on XGB Regressor algorithm is
-                <b>{{prediction_text1}}</b>
-            </div>
-            {% else %}
-            <div class="alert alert-danger" role="alert">
-                The rating of the product based on XGB Regressor algorithm is
-                <b>{{prediction_text1}}</b>
-            </div>
-            {% endif %}
         </div>
         <center>
             <legend>The values you have selected</legend>
@@ -164,68 +145,35 @@
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>Category</td>
+                            <td>Open prices</td>
                             <td>{{dataInput[0]}}</td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
-                            <td>Rating Count</td>
+                            <td>Close prices</td>
                             <td>{{dataInput[1]}}</td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
-                            <td>Installs</td>
+                            <td>High prices</td>
                             <td>{{dataInput[2]}}</td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
-                            <td>Minimum Installs</td>
+                            <td>Low prices</td>
                             <td>{{dataInput[3]}}</td>
                         </tr>
                         <tr>
                             <th scope="row">5</th>
-                            <td>Maximum Installs</td>
+                            <td>Volume</td>
                             <td>{{dataInput[4]}}</td>
                         </tr>
                         <tr>
                             <th scope="row">6</th>
-                            <td>Free</td>
-                            <td>{{dataInput[5]}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7</th>
-                            <td>Price</td>
-                            <td>{{dataInput[6]}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8</th>
-                            <td>Size</td>
-                            <td>{{dataInput[7]}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9</th>
-                            <td>Minimum Android</td>
-                            <td>{{dataInput[8]}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">10</th>
-                            <td>Content Rating</td>
-                            <td>{{dataInput[9]}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">11</th>
-                            <td>Ad Supported</td>
-                            <td>{{dataInput[10]}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">12</th>
-                            <td>In App Purchases</td>
-                            <td>{{dataInput[11]}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">13</th>
-                            <td>Editors Choice</td>
-                            <td>{{dataInput[12]}}</td>
+                            <td>Day</td>
+                            <td>
+                                {{dataInput[7]}}-{{dataInput[6]}}-{{dataInput[5]}}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -242,7 +190,7 @@
             >
                 <div class="toast-header">
                     <img
-                        src="{{url_for('static', filename= 'google-play.png')}}"
+                        src="{{url_for('static', filename= 'financial-profit.png')}}"
                         class="me-2"
                         alt="Google Play Store"
                     />
